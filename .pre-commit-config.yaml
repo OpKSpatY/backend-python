@@ -3,10 +3,6 @@ repos:
     rev: 23.12.1
     hooks:
       - id: black
-        # It is recommended to specify the latest version of Python
-        # supported by your project here, or alternatively use
-        # pre-commit's default_language_version, see
-        # https://pre-commit.com/#top_level-default_language_version
         language_version: python3.11
         stages: [commit]
 -   repo: https://github.com/pycqa/flake8
@@ -18,7 +14,7 @@ repos:
     hooks:
     -   id: requirements
         name: requirements
-        entry: bash -c 'venv/bin/pip freeze > requirements.txt; git add requirements.txt'
+        entry: bash -c 'venv/bin/pip3 freeze > requirements.txt; git add requirements.txt'
         language: system
         pass_filesnames: false
         stage: [commit]
