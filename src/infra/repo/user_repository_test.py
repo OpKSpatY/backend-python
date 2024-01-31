@@ -39,3 +39,29 @@ def test_insert_user():
 
     transaction.commit()
     connection.close()
+
+
+'''def test_select_user(): # teste c/ problema!
+    """ Should select a user in Users table and compare it """
+
+    user_id = faker.random_number(digits=5)
+    name = faker.name()
+    password = faker.word()
+    data = UsersModel(id=user_id, name=name, password=password)
+
+    engine = db_connection_handler.get_engine()
+    with engine.connect() as conn:
+        conn.execute(
+            text(f"INSERT INTO users (id, name, password) VALUES ({user_id}, '{name}', '{password}')")
+        )
+
+    query_user1 = user_repository.select_user(user_id=user_id)
+    query_user2 = user_repository.select_user(name=name)
+    query_user3 = user_repository.select_user(user_id=user_id, name=name)
+
+    assert data in query_user1
+
+    with engine.connect() as conn:
+        conn.execute(
+        text(f"DELETE FROM users WHERE id='{user_id}';")
+    )'''
