@@ -2,16 +2,18 @@ import enum
 from sqlalchemy import Column, String, Integer, ForeignKey, Enum
 from src.infra.config import Base
 
-class AnimalTypes(enum.Enum):
-    """ Defining animal types """
 
-    dog = "dog",
-    cat = "cat",
-    fish = "fish",
+class AnimalTypes(enum.Enum):
+    """Defining animal types"""
+
+    dog = "dog"
+    cat = "cat"
+    fish = "fish"
     turtle = "turle"
 
+
 class Pets(Base):
-    """ Pets Entity """
+    """Pets Entity"""
 
     __tablename__ = "pets"
 
@@ -23,3 +25,14 @@ class Pets(Base):
 
     def __repr__(self):
         return f"Pet: [name={self.name}, specie={self.specie}, user_id={self.user_id}]"
+
+    def __eq__(self, other):
+        if (
+            self.id == other.id
+            and self.name == other.name
+            and self.specie == other.specie
+            and self.age == other.age
+            and self.user_id == other.user_id
+        ):
+            return True
+        return False
