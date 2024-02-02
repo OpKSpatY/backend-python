@@ -13,18 +13,6 @@ repos:
         language_version: python3.11
         stages: [commit]
 
--   repo: https://github.com/pycqa/flake8
-    rev: '3.7.9'
-    hooks:
-    -   id: flake8
-        stages: [commit]
--   repo: local
-    hooks:
-    -   id: requirements
-        name: Generate requirements.txt
-        entry: bash -c 'source venv/Scripts/activate && pip freeze > requirements.txt && git add requirements.txt'
-        language: system
-        stages: [commit]
 -   repo: local
     hooks:
     -   id: pytest
