@@ -1,1 +1,2 @@
-from .users import Users  # noqa: F401
+from .users import Users
+from .pets import Pets
